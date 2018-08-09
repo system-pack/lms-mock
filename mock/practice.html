@@ -2,142 +2,127 @@
 <html>
 <head>
 
-	<meta charset="utf-8" />
-	<title>わこ塾＞演習画面</title>
+<meta charset="utf-8" />
+<title>わこ塾＞演習画面</title>
 
-	<!-- BootstrapのCSS読み込み -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- footer用のcss読み込み -->
-	<link href="css/sticky-footer.css" rel="stylesheet">
-	<!-- grid用のcss読み込み -->
-	<link href="css/grid.css" rel="stylesheet">
-	<!-- jQuery読み込み -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- BootstrapのJS読み込み -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script>
+<!-- BootstrapのCSS読み込み -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- footer用のcss読み込み -->
+<link href="css/sticky-footer.css" rel="stylesheet">
+<!-- grid用のcss読み込み -->
+<link href="css/grid.css" rel="stylesheet">
+<!-- jQuery読み込み -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+	$(function() {
+		var height = $("html").height();
+		var nav_height = $("#nav_pane").height();
+		var footer_height = $("#footer_pane").height();
+		$("#home").height(height - nav_height - footer_height - 120);
+		$("#editor").height((height - nav_height - footer_height) / 2 - 50);
+		$("#editor2").height((height - nav_height - footer_height) / 2 - 50);
 
-		$(function () {
-			var height = $("html").height();
-			var nav_height = $("#nav_pane").height();
-			var footer_height = $("#footer_pane").height();
-			$("#home").height(height - nav_height - footer_height - 120);
-			$("#editor").height((height - nav_height - footer_height) / 2 - 50);
-			$("#editor2").height((height - nav_height - footer_height) / 2 - 50);
+		var width = $("html").width();
+		$("#left_pane").width((width - 30) / 2);
+		$("#right_pane").width((width - 30) / 2);
+	});
 
-			var width = $("html").width();
-			$("#left_pane").width((width - 30) / 2);
-			$("#right_pane").width((width - 30) / 2);
-		});
+	function left_click() {
 
-		function left_click() {
+		$("#left_pane").removeClass(".col");
+		$("#right_pane").removeClass(".col");
+		var left_pane_width = $("#left_pane").width();
+		var right_pane_width = $("#right_pane").width();
+		$("#left_pane").width(left_pane_width - 10);
+		$("#right_pane").width(right_pane_width + 10);
 
-			$("#left_pane").removeClass(".col");
-			$("#right_pane").removeClass(".col");
-			var left_pane_width = $("#left_pane").width();
-			var right_pane_width = $("#right_pane").width();
-			$("#left_pane").width(left_pane_width - 10);
-			$("#right_pane").width(right_pane_width + 10);
-
-			console.log(left_pane_width - 10);
-			console.log(right_pane_width + 10);
-		}
-
-
-	</script>
+		console.log(left_pane_width - 10);
+		console.log(right_pane_width + 10);
+	}
+</script>
 </head>
 
 <body>
 
 	<!-- Fixed navbar -->
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="nav_pane">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+		id="nav_pane">
 		<!-- <a class="navbar-brand" href="#">わこ塾</a> -->
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-		 aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarCollapse" aria-controls="navbarCollapse"
+			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="#">メニュー</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">カリキュラム</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Javaの難所
+				<li class="nav-item"><a class="nav-link" href="#">メニュー</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">カリキュラム</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">Javaの難所
 						<span class="sr-only">(current)</span>
-					</a>
-				</li>
+				</a></li>
 			</ul>
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">logout</button>
 		</div>
 	</nav>
 	<main role="main" style="margin-top: 60px;" class="container-fluid">
-		<div class="row">
-			<div id="left_pane">
-				<ul class="nav nav-tabs" id="myTab" role="tablist" style="width:100%">
-					<li class="nav-item">
-						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">問題</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">解答</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">テキスト</a>
-					</li>
+	<div class="row" style="width:100%;">
+			<div class="col">
+				<ul class="nav nav-tabs" id="myTab" role="tablist"
+					style="width: 100%">
+					<li class="nav-item"><a class="nav-link active" id="home-tab"
+						data-toggle="tab" href="#home" role="tab" aria-controls="home"
+						aria-selected="true">問題</a></li>
+					<li class="nav-item"><a class="nav-link" id="profile-tab"
+						data-toggle="tab" href="#profile" role="tab"
+						aria-controls="profile" aria-selected="false">解答</a></li>
+					<li class="nav-item"><a class="nav-link" id="contact-tab"
+						data-toggle="tab" href="#contact" role="tab"
+						aria-controls="contact" aria-selected="false">テキスト</a></li>
 				</ul>
 				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+					<div class="tab-pane fade show active" id="home" role="tabpanel"
+						aria-labelledby="home-tab">...</div>
+					<div class="tab-pane fade" id="profile" role="tabpanel"
+						aria-labelledby="profile-tab">...</div>
+					<div class="tab-pane fade" id="contact" role="tabpanel"
+						aria-labelledby="contact-tab">...</div>
 				</div>
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
-						<li class="page-item disabled">
-							<a class="page-link" href="#" tabindex="-1">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">4</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">5</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
+						<li class="page-item disabled"><a class="page-link" href="#"
+							tabindex="-1">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">4</a></li>
+						<li class="page-item"><a class="page-link" href="#">5</a></li>
+						<li class="page-item"><a class="page-link" href="#">Next</a></li>
 					</ul>
 				</nav>
 			</div>
-			<span onclick="left_click();">
-				<</span>
-					<span>></span>
-					<div id="right_pane">
-						<div id="editor" style="width:100%;"></div>
-						<div style="width: 100%; padding: 5px 0 5px 0;height: 40px;text-align: right;">
-							<button type="button" class="btn btn-secondary btn-sm">実行</button>
-						</div>
-						<div id="editor2" style="width:100%;"></div>
-						<div style="width: 100%; padding: 5px 0 5px 0;height: 40px;text-align: right;">
-							<button type="button" class="btn btn-secondary btn-sm">答え合わせ</button>
-						</div>
-						<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
-						<script>
-							ace.edit("editor");
-							ace.edit("editor2");
-						</script>
-					</div>
+			<!-- <span onclick="left_click();"> <</span><span>></span> -->
+			<div class="col">
+				<div id="editor" style="width: 100%;"></div>
+				<div
+					style="width: 100%; padding: 5px 0 5px 0; height: 40px; text-align: right;">
+					<button type="button" class="btn btn-secondary btn-sm">実行</button>
+				</div>
+				<div id="editor2" style="width: 100%;"></div>
+				<div
+					style="width: 100%; padding: 5px 0 5px 0; height: 40px; text-align: right;">
+					<button type="button" class="btn btn-secondary btn-sm">答え合わせ</button>
+				</div>
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+				<script>
+					ace.edit("editor");
+					ace.edit("editor2");
+				</script>
+			</div>
 		</div>
-
 	</main>
 
 	<footer class="footer" id="footer_pane">
